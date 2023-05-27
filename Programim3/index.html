@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" href="JS.png">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="Objects1.js"></script>
+	<script src="control1.js"></script>
+	<style>
+		.container {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			padding: 20px;
+			background-color: #f1f1f1;
+			text-align: right;
+		}
+
+		h1 {
+			margin: 0;
+			font-size: 32px;
+			font-weight: bold;
+		}
+
+		.container p {
+			margin: 0;
+			font-size: 14px;
+			color: #666;
+		}
+
+		.p {
+			float: right;
+		}
+
+		.legend-wrapper {
+			position: fixed;
+			top: 0;
+			right: 0;
+			padding: 20px;
+			display: flex;
+			align-items: flex-start;
+		}
+
+		canvas#legend {
+			width: 200px;
+			height: 220px;
+		}
+	</style>
+
+	<title>Game of Life</title>
+</head>
+<body>
+	<h1>Game Of Life</h1>
+	<p id="season"></p>
+	<p1 id="grass"></p1>
+	<br></br>
+	<p2 id="grasseater"></p2>
+	<br></br>
+	<p3 id="predator"></p3>
+	<br></br>
+	<p4 id="humans"></p4>
+	<br></br>
+	<p5 id="robots"></p5>
+	<br></br>
+	<p6 id="snow"></p6>
+	<br></br>
+	<button onclick="changeSeason()">Change Season</button>
+	<button id="Illnsses" onclick="illnes_conditons()">Illnsses</button>
+	<button id="bomb" onclick="bomb_conditions()">!!BOMB!!</button>
+	<button id="night-to-day" onclick="change_theme_color()">☾</button>
+	<button id="playmusic" onclick="play_music()">Play MUSIC</button>
+	<button id="pauseMusic" onclick="pause_music()">Pause MUSIC</button>
+	<div class="legend-wrapper">
+        <canvas id="legend" width="200" height="200"></canvas>
+    </div>
+	<div class="container">
+		<h1>  TUMO Tirana   </h1>
+		<p>Worked by: Rubin Ramallari</p>
+	</div>
+	<div id="Control">
+		<button id="Pause" onclick="pauseGame()">Pause</button>
+		<button id="clear" onclick="clearGrid()">Clear Grid</button>
+		<button id="seed" onclick="seed()">Seed</button>
+	</div>
+	<script>
+		var canvas = document.getElementById("legend");
+		var ctx = canvas.getContext("2d");
+		ctx.font = "14px Arial";
+		ctx.fillStyle = "white";
+		ctx.fillRect(10, 10, 20, 20);
+		ctx.strokeStyle = "black";
+		ctx.strokeRect(10, 10, 20, 20);
+		ctx.fillStyle = "green";
+		ctx.fillRect(10, 40, 20, 20);
+		ctx.fillStyle = "orange";
+		ctx.fillRect(10, 70, 20, 20);
+		ctx.fillStyle = "purple";
+		ctx.fillRect(10, 100, 20, 20);
+		ctx.fillStyle = "black";
+		ctx.fillRect(10, 130, 20, 20);
+		ctx.fillStyle = "blue";
+		ctx.fillRect(10, 160, 20, 20);
+		ctx.fillStyle = "black";
+		ctx.fillText("White: Snow", 40, 25);
+		ctx.fillText("Green: Grass", 40, 55);
+		ctx.fillText("Orange: Grass Eater", 40, 85);
+		ctx.fillText("Purple: Predator", 40, 115);
+		ctx.fillText("Black: Humans", 40, 145);
+		ctx.fillText("Blue: Robots", 40, 175);
+    </script>
+</body>
+</html>
